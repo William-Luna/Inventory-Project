@@ -25,3 +25,5 @@ const ItemSchema = new Schema ({
     return: Number,
     fees: Number
 })
+
+module.exports = mongoose.model('Item', ItemSchema);
