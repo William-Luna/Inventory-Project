@@ -1,0 +1,44 @@
+<h1>CREATE AN ITEM</h1>
+
+<form action="/items" method="post">
+    <div>
+        <label for="title">Title</label>
+        <input type="text" id="title" name="item[title]" required>
+    </div>
+    <div>
+        <label for="category">Category</label>
+        <select name="category" id="item[category]" required>
+            <option value="sneakers">Sneakers</option>
+            <option value="electronics">Electronics</option>
+            <option value="cards">Trading Cards</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    <div>
+        <label for="dateBought">Date Bought</label>
+        <input type="date" id="dateBought" name="item[dateBought]" required>
+    </div>
+    <div>
+        <label for="cost">Price Paid</label>
+        <input type="number" id="cost" name="item[cost]" required>
+    </div>
+    <div>
+        <label for="ifsold">Sold?</label>
+        <input type="checkbox" id="ifsold" name="item[ifSold]">
+    </div>
+    <div>
+        <label for="dateSold">Date Sold</label>
+        <input type="date" id="dateSold" name="item[dateSold]">
+    </div>
+    <div>
+        <label for="return">Price Sold</label>
+        <input type="number" id="return" name="item[return]">
+    </div>
+    <div>
+        <label for="fees">Fees</label>
+        <input type="number" id="fees" name="item[fees]">
+    </div>
+    <div>
+        <button>Create Item</button>
+    </div>
+</form>
