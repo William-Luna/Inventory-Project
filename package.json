@@ -4,15 +4,20 @@
   "description": "An inventory management system designed for personal reselling businesses.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css": "postcss public/styles/tailwind.css -o public/styles/styles.css"
   },
   "author": "William Luna",
   "license": "ISC",
   "dependencies": {
+    "autoprefixer": "^10.4.12",
     "ejs": "^3.1.8",
     "ejs-mate": "^4.0.0",
     "express": "^4.18.1",
     "method-override": "^3.0.0",
-    "mongoose": "^6.5.4"
+    "mongoose": "^6.5.4",
+    "postcss": "^8.4.17",
+    "postcss-cli": "^10.0.0",
+    "tailwindcss": "^3.1.8"
   }
 }
