@@ -21,7 +21,7 @@ module.exports.createItem = async (req, res) => {
     });
     await item.save();
     console.log(item);
-    res.redirect(`/items`);
+    res.redirect('/items');
 }
 
 //GET /ITEMS/CREATE CONTROL

@@ -1,45 +1,56 @@
 <% layout('layouts/boilerplate')%>
-    <h1>CREATE AN ITEM</h1>
 
-    <form action="/items" method="post">
-        <div>
+    <h1 class="text-2xl text-center text-white">Create New Item</h1>
+
+<div class="flex justify-center">
+    <form action="/items" method="post" class="grid gap-6 mb-6 md:grid-cols-2 md:border-2 px-2 py-2 m-2 rounded-md bg-white shadow">
+        <div class="flex flex-col mb-4">
             <label for="title">Title</label>
-            <input type="text" id="title" name="item[title]" required>
+            <input type="text" id="title" name="item[title]" required class="border rounded px-2 py-2">
         </div>
-        <div>
+        <div class="flex flex-col mb-4">
             <label for="category">Category</label>
-            <select name="category" id="item[category]" required>
+            <select name="category" id="item[category]" required class="border rounded px-2 py-2">
                 <option value="sneakers">Sneakers</option>
                 <option value="electronics">Electronics</option>
                 <option value="cards">Trading Cards</option>
                 <option value="other">Other</option>
             </select>
         </div>
-        <div>
+        <div class="flex flex-col mb-4">
             <label for="dateBought">Date Bought</label>
-            <input type="date" id="dateBought" name="item[dateBought]" required>
+            <input type="date" id="dateBought" name="item[dateBought]" required class="border rounded px-2 py-2">
         </div>
-        <div>
+        <div class="flex flex-col mb-4">
             <label for="cost">Price Paid</label>
-            <input type="number" id="cost" name="item[cost]" required>
+            <input type="number" id="cost" name="item[cost]" required class="border rounded px-2 py-2">
         </div>
-        <div>
-            <label for="ifsold">Sold?</label>
-            <input type="checkbox" id="ifsold" name="item[ifSold]">
+        <div class="flex flex-col mb-4">
+            <label>Sold?</label>
+            <div>
+                <input type="radio" id="ifsoldtrue" name="item[ifSold]" value="true">
+                <label for="ifsoldtrue">Yes</label>
+            </div>
+            <div>
+                <input type="radio" id="ifsoldfalse" name="item[ifSold]" value="false">
+                <label for="ifsoldfalse">No</label>
+             </div>
         </div>
-        <div>
+        <div class="flex flex-col mb-4">
             <label for="dateSold">Date Sold</label>
-            <input type="date" id="dateSold" name="item[dateSold]">
+            <input type="date" id="dateSold" name="item[dateSold]" class="border rounded px-2 py-2">
         </div>
-        <div>
+        <div class="flex flex-col mb-4">
             <label for="return">Price Sold</label>
-            <input type="number" id="return" name="item[return]">
+            <input type="number" id="return" name="item[return]" class="border rounded px-2 py-2">
         </div>
-        <div>
+        <div class="flex flex-col mb-4">
             <label for="fees">Fees</label>
-            <input type="number" id="fees" name="item[fees]">
+            <input type="number" id="fees" name="item[fees]" class="border rounded px-2 py-2">
         </div>
-        <div>
-            <button>Create Item</button>
+        <div class="md: grid-cols-3">
+            <button class="border rounded px-2 py-2">Create Item</button>
+            <a href="/items">Cancel</a>
         </div>
     </form>
+</div>

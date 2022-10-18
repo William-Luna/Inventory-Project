@@ -40,7 +40,6 @@ app.all('*', (req, res, next) => {
     next(new ExpressError('Page Not Found', 404))
 });
 
-
 app.listen(3333, () => {
     console.log('Serving on Port 3333')
 })

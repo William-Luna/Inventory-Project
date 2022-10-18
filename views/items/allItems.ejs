@@ -1,11 +1,12 @@
 <% layout('layouts/boilerplate')%>
-    <h1 class="underline">All Items</h1>
+    <h1 class="text-white">All Items</h1>
 
-    <div class="items-list">
+    <div class="text-white">
         <ul>
             <% for(let item of items) { %>
                 <li>
-                    <%= item.title %>
+                    <%= item.id %>
+                        <%= item.title %>
                 </li>
                 <% } %>
         </ul>

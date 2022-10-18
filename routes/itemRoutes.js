@@ -3,6 +3,8 @@ const router = express.Router();
 const items = require('../controllers/items');
 const catchAsync = require("../utilities/catchAsync");
 
+const Item = require('../models/item');
+
 router.route('/')
     .get(catchAsync(items.allItems)) //index all items
     .post(catchAsync(items.createItem)); // create item
