@@ -6,7 +6,10 @@
             <% for(let item of items) { %>
                 <li>
                     <%= item.id %>
-                        <%= item.title %>
+                        <a href="/items/<%= item.id %> ">
+                            <%= item.title %>
+                        </a>
+
                 </li>
                 <% } %>
         </ul>

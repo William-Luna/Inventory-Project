@@ -1,2 +1,29 @@
 <% layout('layouts/boilerplate')%>
-    <h1>ITEM DETAILS</h1>
+    <h1 class="text-2xl text-center text-white">
+        <%= item.title %> Details
+    </h1>
+
+    <div class="flex justify-center">
+        <div class="grid gap-6 mb-6 border-2 p-2 m-2 rounded-md bg-white shadow">
+            <div class="">
+                <h5 class="text-bold">Category</h5>
+                <div class="">
+                    <%= item.category %>
+                </div>
+            </div>
+            <div class="">
+                <h5 class="text-bold">Cost of Item</h5>
+                <div class="">
+                    <%= item.cost %>
+                </div>
+            </div>
+            <div class="">
+                <h5 class="text-bold">Date Bought</h5>
+                <div class="">
+                    <%= item.dateBought.toISOString().slice(0,-1) %>
+                </div>
+            </div>
+            <a href="/items/<%= item.id %>/edit">Edit</a>
+            <a href="/items">Back to All Items</a>
+        </div>
+    </div>
