@@ -12,11 +12,11 @@
             </div>
             <div class="flex flex-col mb-4">
                 <label for="category">Category</label>
-                <select name="category" id="item[category]" required class="border rounded px-2 py-2">
-                    <option value="sneakers" <%if (item.category === 'sneakers') {%> checked <% } %> >Sneakers</option>
-                    <option value="electronics" <%if (item.category === 'electronics') {%> checked <% } %> >Electronics</option>
-                    <option value="cards" <%if (item.category === 'cards') {%> checked <% } %> >Trading Cards</option>
-                    <option value="other" <%if (item.category === 'other') {%> checked <% } %> >Other</option>
+                <select name="item[category]" id="category" required class="border rounded px-2 py-2">
+                    <option value="Sneakers" <%if (item.category === 'sneakers') {%> checked <% } %> >Sneakers</option>
+                    <option value="Electronics" <%if (item.category === 'electronics') {%> checked <% } %> >Electronics</option>
+                    <option value="Cards" <%if (item.category === 'cards') {%> checked <% } %> >Trading Cards</option>
+                    <option value="Other" <%if (item.category === 'other') {%> checked <% } %> >Other</option>
                 </select>
             </div>
             <div class="flex flex-col mb-4">

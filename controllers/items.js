@@ -50,7 +50,8 @@ module.exports.updateItem = async (req, res) => {
     const { id } = req.params;
     const item = await Item.findByIdAndUpdate(id, { ...req.body.item });
     await item.save();
-    res.redirect(`/shops/${item._id}`);
+    console.log(item);
+    res.redirect(`/items/${item._id}`);
 }
 
 //DELETE /ITEMS/$ID CONTROL

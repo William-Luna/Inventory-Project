@@ -1,16 +1,31 @@
 <% layout('layouts/boilerplate')%>
-    <h1 class="text-white">All Items</h1>
+    <h1 class="text-white py-3 text-2xl text-center">List of All Items</h1>
 
-    <div class="text-white">
-        <ul>
-            <% for(let item of items) { %>
-                <li>
-                    <%= item.id %>
-                        <a href="/items/<%= item.id %> ">
-                            <%= item.title %>
-                        </a>
-
-                </li>
-                <% } %>
-        </ul>
-    </div>
+<div class="flex justify-center">
+<table class="table table-fixed text-center text-white w-4/6">
+    <thead class="uppercase">
+        <tr>
+            <th>Date Bought</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Cost</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for (let [i, item] of items.entries()) { %> 
+        <tr class="hover:bg-white hover:text-black border-b <% if (i % 2 === 0) {%>bg-slate-700<%}%>">
+            <td class="py-3"><%= item.dateBought.toISOString().slice(0, 10) %></td>
+            <td class="py-3"><%= item.title %></td>
+            <td class="py-3"><%= item.category %></td>
+            <td class="py-3">$<%= item.cost %></td>
+            <td class="py-3">
+                <a href="/items/<%= item.id %>" class="px-1">Details</a>
+                <a href="/items/<%= item.id %>/edit" class="px-1">Edit</a>
+                <a href="#" class="px-1">Delete</a>
+            </td>
+        </tr>
+        <% } %> 
+    </tbody>
+</table>
+</div>
