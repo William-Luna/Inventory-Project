@@ -58,5 +58,6 @@ module.exports.updateItem = async (req, res) => {
 module.exports.deleteItem = async (req, res) => {
     const { id } = req.params;
     const item = await Item.findByIdAndDelete(id);
+    console.log(item);
     res.redirect('/items');
 }
