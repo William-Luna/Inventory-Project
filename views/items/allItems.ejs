@@ -1,6 +1,8 @@
 <% layout('layouts/boilerplate')%>
-    <h1 class="text-white py-3 text-2xl text-center">List of All Items</h1>
-
+    <div class="text-white py-3 flex justify-evenly space-x-40">
+        <h1 class="text-xl">List of All Items</h1>
+        <a href="/items/create" class="bg-blue-900 rounded px-1">Add An Item +</a>
+    </div>
     <div class="flex justify-center">
         <table class="table table-fixed text-center text-white w-4/6">
             <thead class="uppercase">
@@ -15,7 +17,8 @@
             </thead>
             <tbody>
                 <% for (let [i, item] of items.entries()) { %>
-                    <tr class="hover:bg-gray-100 hover:text-black border-b <% if (i % 2 === 0) {%>bg-slate-700<%}%>">
+                    <tr
+                        class="hover:bg-gray-100 hover:text-black hover:duration-500 border-b <% if (i % 2 === 0) {%>bg-slate-700<%}%>">
                         <td class="py-3">
                             <%= item.dateBought.toISOString().slice(0, 10) %>
                         </td>

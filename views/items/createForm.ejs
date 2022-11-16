@@ -3,57 +3,68 @@
     <h1 class="text-2xl text-center text-white">Create New Item</h1>
 
     <div class="flex justify-center">
-        <form action="/items" method="post"
+        <form action="/items" method="post" id="form"
             class="grid gap-6 mb-6 md:grid-cols-2 md:border-2 px-2 py-2 m-2 rounded-md bg-white shadow">
+
+
             <div class="flex flex-col mb-4">
                 <label for="title">Title</label>
                 <input type="text" id="title" name="item[title]" placeholder="Item" required
                     class="border rounded px-2 py-2">
+                <span class="title-error hidden text-red-600 text-xs py-1">Title Error</span>
             </div>
             <div class="flex flex-col mb-4">
                 <label for="category">Category</label>
                 <select name="item[category]" id="category" required class="border rounded px-2 py-2">
-                    <option value="sneakers" >Sneakers</option>
-                    <option value="electronics">Electronics</option>
-                    <option value="cards">Trading Cards</option>
-                    <option value="other">Other</option>
+                    <option value="Sneakers" >Sneakers</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Cards">Trading Cards</option>
+                    <option value="Other">Other</option>
                 </select>
+                <span class="category-error hidden text-red-600 text-xs py-1">Category Error</span>
             </div>
             <div class="flex flex-col mb-4">
                 <label for="dateBought">Date Bought</label>
                 <input type="date" id="dateBought" name="item[dateBought]" required class="border rounded px-2 py-2">
+                <span class=" dateBought-error hidden text-red-600 text-xs py-1">Date Bought Error</span>
             </div>
             <div class="flex flex-col mb-4">
                 <label for="cost">Price Paid ($ USD)</label>
                 <input type="number" id="cost" name="item[cost]" required min="0" placeholder="0.00" step=".01"
                     pattern="^\d*(\.\d{1,2})?$" class="border rounded px-2 py-2">
+                <span class="cost-error hidden text-red-600 text-xs py-1">Cost Error</span>
             </div>
             <div class="flex flex-col mb-4">
                 <label>Sold?</label>
                 <div>
-                    <input type="radio" id="ifsoldtrue" name="item[ifSold]" value="true" onclick="toggleFormsOn()">
-                    <label for="ifsoldtrue">Yes</label>
+                    <input type="radio" id="ifSoldTrue" name="item[ifSold]" value="true" onclick="toggleFieldsOn()">
+                    <label for="ifSoldTrue">Yes</label>
                 </div>
                 <div>
-                    <input type="radio" id="ifsoldfalse" name="item[ifSold]" value="false" onclick="toggleFormsOff()" checked>
+                    <input type="radio" id="ifsoldfalse" name="item[ifSold]" value="false" onclick="toggleFieldsOff()" checked>
                     <label for="ifsoldfalse">No</label>
                 </div>
+                <span class="ifSold-error hidden text-red-600 text-xs py-1">If Sold Error</span>
             </div>
             <div class="flex flex-col mb-4">
                 <label for="dateSold">Date Sold</label>
                 <input type="date" id="dateSold" name="item[dateSold]" class="sold-field border rounded px-2 py-2 bg-gray-100 cursor-not-allowed" disabled>
+                <span class="dateSold-error hidden text-red-600 text-xs py-1">Date Sold Error</span>
             </div>
             <div class="flex flex-col mb-4">
                 <label for="return">Price Sold</label>
-                <input type="number" id="return" name="item[return]" class="sold-field border rounded px-2 py-2 bg-gray-100 cursor-not-allowed" disabled>
+                <input type="number" id="return" name="item[return]" min="0" step=".01" class="sold-field border rounded px-2 py-2 bg-gray-100 cursor-not-allowed" disabled>
+                <span class="return-error hidden text-red-600 text-xs py-1">Return Error</span>
             </div>
             <div class="flex flex-col mb-4">
                 <label for="fees">Fees</label>
-                <input type="number" id="fees" name="item[fees]" class="sold-field border rounded px-2 py-2 bg-gray-100 cursor-not-allowed" disabled>
+                <input type="number" id="fees" name="item[fees]" min="0" step=".01" class="sold-field border rounded px-2 py-2 bg-gray-100 cursor-not-allowed" disabled>
+                <span class="fees-error hidden text-red-600 text-xs py-1">Fees Error</span>
             </div>
             <div class="md: grid-cols-3">
-                <button class="border rounded px-2 py-2">Create Item</button>
+                <button type="submit" id="btn-submit" class="border rounded px-2 py-2">Create Item</button>
                 <a href="/items">Cancel</a>
             </div>
         </form>
+        <div id="blank-error" class="hidden block border-red-500"></div>
     </div>
