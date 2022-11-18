@@ -39,7 +39,7 @@ const categories = ["Sneakers", "Electronics", "Cards", "Other"];
 form.addEventListener("submit", function (e) {
     e.preventDefault(); //prevent submission for validation
     checkForm();
-    
+
 
 });
 
@@ -51,14 +51,11 @@ function checkForm() {
         delete errPrompt[key];
     }
 
-    titleError.classList.remove("border-red-400");
-    categoryError.classList.remove("border-red-400");
-    dateBoughtError.classList.remove("border-red-400");
-    costError.classList.remove("border-red-400");
-    ifSoldError.classList.remove("border-red-400");
-    dateSoldError.classList.remove("border-red-400");
-    returnError.classList.remove("border-red-400");
-    feesError.classList.remove("border-red-400");
+    dateBoughtError.classList.add("hidden");
+    dateSoldError.classList.add("hidden");
+
+    dateBoughtField.classList.remove("border-red-400");
+    dateSoldField.classList.remove("border-red-400");
 
     //dateBought validation: Can only be today's date or a past date
     let today = new Date();
@@ -73,7 +70,7 @@ function checkForm() {
         if (dateSoldDate.getUTCDate() < dateBoughtDate.getUTCDate()) {
             errPrompt.dateSold = "Date sold must be after the bought date.";
         }
-    } 
+    }
 
     //If errors exist, display errors. Else, submit form
     if (Object.keys(errPrompt).length > 0) {
@@ -88,14 +85,14 @@ function checkForm() {
 
 function showErrors() {
     if (errPrompt.dateBought) {
-        dateBoughtField.classList.add("border-red-500");
+        dateBoughtField.classList.add("border-red-400");
         dateBoughtError.classList.add("block");
         dateBoughtError.innerHTML = errPrompt.dateBought;
         dateBoughtError.classList.add("block");
         dateBoughtError.classList.remove("hidden");
     }
     if (errPrompt.dateSold) {
-        dateSoldField.classList.add("border-red-500");
+        dateSoldField.classList.add("border-red-400");
         dateSoldError.classList.add("block");
         dateSoldError.innerHTML = errPrompt.dateSold;
         dateSoldError.classList.add("block");

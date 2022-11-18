@@ -1,5 +1,5 @@
 <% layout('layouts/boilerplate')%>
-    <h1 class="text-2xl text-center text-white">Edit <%= item.title%>
+    <h1 class="text-2xl text-center text-white py-2">Edit <%= item.title%>
     </h1>
 
     <div class="flex justify-center">
@@ -75,8 +75,8 @@
                         <span class="fees-error hidden text-red-600 text-xs py-1">Fees Error</span>
             </div>
             <div class="md: grid-cols-3">
-                <button type="submit" id="btn-submit" class="border rounded px-2 py-2">Save</button>
-                <a href="/items">Cancel</a>
+                <button type="submit" id="btn-submit" class=" bg-green-500 text-white rounded px-2 py-2">Save</button>
+                <a href="/items" class="bg-red-500 text-white rounded px-2 py-3">Cancel</a>
             </div>
         </form>
     </div>

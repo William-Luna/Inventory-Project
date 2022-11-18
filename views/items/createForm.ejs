@@ -1,6 +1,6 @@
 <% layout('layouts/boilerplate')%>
 
-    <h1 class="text-2xl text-center text-white">Create New Item</h1>
+    <h1 class="text-2xl text-center text-white py-2">Create New Item</h1>
 
     <div class="flex justify-center">
         <form action="/items" method="post" id="form"
@@ -66,9 +66,10 @@
                 <span class="fees-error hidden text-red-600 text-xs py-1">Fees Error</span>
             </div>
             <div class="md: grid-cols-3">
-                <button type="submit" id="btn-submit" class="border rounded px-2 py-2">Create Item</button>
-                <a href="/items">Cancel</a>
+                <button type="submit" id="btn-submit" class="bg-green-500 text-white rounded px-2 py-2">Create
+                    Item</button>
+                <a href="/items" class="bg-red-500 text-white rounded px-2 py-3">Cancel</a>
             </div>
         </form>
-        <div id="blank-error" class="hidden block border-red-500"></div>
+        <div id="blank-error" class="hidden block border-red-400"></div>
     </div>
