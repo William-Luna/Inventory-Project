@@ -3,63 +3,79 @@
     </h1>
 
     <div class="flex justify-center">
-        <form action="/items/<%= item.id%>?_method=PATCH" method="post"
+        <form action="/items/<%= item.id%>?_method=PATCH" method="post" id="form"
             class="grid gap-6 mb-6 md:grid-cols-2 md:border-2 px-2 py-2 m-2 rounded-md bg-white shadow">
             <div class="flex flex-col mb-4">
                 <label for="title">Title</label>
                 <input type="text" id="title" name="item[title]" value="<%= item.title%>" required
                     class="border rounded px-2 py-2">
+                <span class="title-error hidden text-red-600 text-xs py-1">Title Error</span>
             </div>
             <div class="flex flex-col mb-4">
                 <label for="category">Category</label>
                 <select name="item[category]" id="category" required class="border rounded px-2 py-2">
-                    <option value="Sneakers" <%if (item.category === 'sneakers') {%> checked <% } %> >Sneakers</option>
-                    <option value="Electronics" <%if (item.category === 'electronics') {%> checked <% } %> >Electronics</option>
-                    <option value="Cards" <%if (item.category === 'cards') {%> checked <% } %> >Trading Cards</option>
-                    <option value="Other" <%if (item.category === 'other') {%> checked <% } %> >Other</option>
+                    <option value="Sneakers" <%if (item.category==='Sneakers' ) {%> checked <% } %> >Sneakers</option>
+                    <option value="Electronics" <%if (item.category==='Electronics' ) {%> checked <% } %> >Electronics
+                    </option>
+                    <option value="Cards" <%if (item.category==='Cards' ) {%> checked <% } %> >Trading Cards</option>
+                    <option value="Other" <%if (item.category==='Other' ) {%> checked <% } %> >Other</option>
                 </select>
+                <span class="category-error hidden text-red-600 text-xs py-1">Category Error</span>
             </div>
             <div class="flex flex-col mb-4">
                 <label for="dateBought">Date Bought</label>
-                <input type="date" id="dateBought" name="item[dateBought]" required value="<%= item.dateBought%>"
-                    class="border rounded px-2 py-2">
+                <input type="date" id="dateBought" name="item[dateBought]" required
+                    value="<%= item.dateBought.toISOString().slice(0,10)%>" class="border rounded px-2 py-2">
+                <span class=" dateBought-error hidden text-red-600 text-xs py-1">Date Bought Error</span>
+
             </div>
             <div class="flex flex-col mb-4">
                 <label for="cost">Price Paid ($ USD)</label>
                 <input type="number" id="cost" name="item[cost]" required min="0" value="<%= item.cost %>" step=".01"
                     pattern="^\d*(\.\d{1,2})?$" class="border rounded px-2 py-2">
+                <span class="cost-error hidden text-red-600 text-xs py-1">Cost Error</span>
             </div>
             <div class="flex flex-col mb-4">
                 <label>Sold?</label>
                 <div>
-                    <input type="radio" id="ifsoldtrue" name="item[ifSold]" value="true" onclick="toggleFormsOn()" <% if(item.ifSold) {%>
+                    <input type="radio" id="ifSoldTrue" name="item[ifSold]" value="true" onclick="toggleFieldsOn()" <%
+                        if(item.ifSold) {%>
                     checked
                     <% } %>
                         >
-                        <label for="ifsoldtrue">Yes</label>
+                        <label for="ifSoldTrue">Yes</label>
                 </div>
                 <div>
-                    <input type="radio" id="ifsoldfalse" name="item[ifSold]" value="false" onclick="toggleFormsOff()" <% if(!item.ifSold) {%>
+                    <input type="radio" id="ifSoldFalse" name="item[ifSold]" value="false" onclick="toggleFieldsOff()"
+                        <% if(!item.ifSold) {%>
                     checked
                     <% } %>
                         >
-                        <label for="ifsoldfalse">No</label>
+                        <label for="ifSoldFalse">No</label>
                 </div>
+                <span class="ifSold-error hidden text-red-600 text-xs py-1">If Sold Error</span>
             </div>
             <div class="flex flex-col mb-4">
                 <label for="dateSold">Date Sold</label>
-                <input type="date" id="dateSold" name="item[dateSold]" class="border rounded px-2 py-2">
+                <input type="date" id="dateSold" name="item[dateSold]" <% console.log(item.ifSold); if (item.ifSold) {%>
+                value="<%= item.dateSold.toISOString().slice(0,10) %>" <% } %> class="sold-field border rounded px-2
+                        py-2">
+                        <span class="dateSold-error hidden text-red-600 text-xs py-1">Date Sold Error</span>
             </div>
             <div class="flex flex-col mb-4">
                 <label for="return">Price Sold</label>
-                <input type="number" id="return" name="item[return]" class="border rounded px-2 py-2">
+                <input type="number" id="return" name="item[return]" min="0" step=".01" <% if (item.ifSold) {%>
+                value="<%= item.fees %>"<% } %> class="sold-field border rounded px-2 py-2">
+                        <span class="return-error hidden text-red-600 text-xs py-1">Return Error</span>
             </div>
             <div class="flex flex-col mb-4">
                 <label for="fees">Fees</label>
-                <input type="number" id="fees" name="item[fees]" class="border rounded px-2 py-2">
+                <input type="number" id="fees" name="item[fees]" min="0" step=".01" <% if (item.ifSold) {%> value="<%=
+                    item.return %>" <% } %> class="sold-field border rounded px-2 py-2">
+                        <span class="fees-error hidden text-red-600 text-xs py-1">Fees Error</span>
             </div>
             <div class="md: grid-cols-3">
-                <button class="border rounded px-2 py-2">Save</button>
+                <button type="submit" id="btn-submit" class="border rounded px-2 py-2">Save</button>
                 <a href="/items">Cancel</a>
             </div>
         </form>

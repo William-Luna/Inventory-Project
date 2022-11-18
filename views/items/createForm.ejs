@@ -16,7 +16,7 @@
             <div class="flex flex-col mb-4">
                 <label for="category">Category</label>
                 <select name="item[category]" id="category" required class="border rounded px-2 py-2">
-                    <option value="Sneakers" >Sneakers</option>
+                    <option value="Sneakers">Sneakers</option>
                     <option value="Electronics">Electronics</option>
                     <option value="Cards">Trading Cards</option>
                     <option value="Other">Other</option>
@@ -41,24 +41,28 @@
                     <label for="ifSoldTrue">Yes</label>
                 </div>
                 <div>
-                    <input type="radio" id="ifsoldfalse" name="item[ifSold]" value="false" onclick="toggleFieldsOff()" checked>
-                    <label for="ifsoldfalse">No</label>
+                    <input type="radio" id="ifSoldFalse" name="item[ifSold]" value="false" onclick="toggleFieldsOff()"
+                        checked>
+                    <label for="ifSoldFalse">No</label>
                 </div>
                 <span class="ifSold-error hidden text-red-600 text-xs py-1">If Sold Error</span>
             </div>
             <div class="flex flex-col mb-4">
                 <label for="dateSold">Date Sold</label>
-                <input type="date" id="dateSold" name="item[dateSold]" class="sold-field border rounded px-2 py-2 bg-gray-100 cursor-not-allowed" disabled>
+                <input type="date" id="dateSold" name="item[dateSold]"
+                    class="sold-field border rounded px-2 py-2 bg-gray-100 cursor-not-allowed" disabled>
                 <span class="dateSold-error hidden text-red-600 text-xs py-1">Date Sold Error</span>
             </div>
             <div class="flex flex-col mb-4">
                 <label for="return">Price Sold</label>
-                <input type="number" id="return" name="item[return]" min="0" step=".01" class="sold-field border rounded px-2 py-2 bg-gray-100 cursor-not-allowed" disabled>
+                <input type="number" id="return" name="item[return]" min="0" step=".01"
+                    class="sold-field border rounded px-2 py-2 bg-gray-100 cursor-not-allowed" disabled>
                 <span class="return-error hidden text-red-600 text-xs py-1">Return Error</span>
             </div>
             <div class="flex flex-col mb-4">
                 <label for="fees">Fees</label>
-                <input type="number" id="fees" name="item[fees]" min="0" step=".01" class="sold-field border rounded px-2 py-2 bg-gray-100 cursor-not-allowed" disabled>
+                <input type="number" id="fees" name="item[fees]" min="0" step=".01"
+                    class="sold-field border rounded px-2 py-2 bg-gray-100 cursor-not-allowed" disabled>
                 <span class="fees-error hidden text-red-600 text-xs py-1">Fees Error</span>
             </div>
             <div class="md: grid-cols-3">
