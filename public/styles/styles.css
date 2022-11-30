@@ -521,6 +521,10 @@ video {
   margin: 0.5rem;
 }
 
+.m-24 {
+  margin: 6rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -579,6 +583,11 @@ video {
 .mx-24 {
   margin-left: 6rem;
   margin-right: 6rem;
+}
+
+.my-24 {
+  margin-top: 6rem;
+  margin-bottom: 6rem;
 }
 
 .mx-3\.5 {
@@ -660,6 +669,21 @@ video {
 
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+@keyframes fadeOut {
+
+  0% {
+    color: transparent;
+  }
+
+  100% {
+    color: #fff;
+  }
+}
+
+.animate-fade {
+  animation: fadeOut 1s ease-in-out;
 }
 
 .cursor-not-allowed {
