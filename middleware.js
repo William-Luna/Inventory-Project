@@ -11,3 +11,12 @@ module.exports.validateItem = (req, res, next) => {
         next();
     }
 }
+
+module.exports.isLoggedIn = (req, res, next) => {
+    if (!req.isAuthenticated()) {
+        req.session.returnTo = req.originalUrl;
+        req.flash('error', 'Please sign in to continue.');
+        return res.redirect('/login');
+    }
+    next();
+}

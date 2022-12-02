@@ -6,9 +6,10 @@ const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate'); //extended ejs engine
 const session = require('express-session'); //for storing authentication
 const passport = require('passport'); //authentication middleware
-const LocalStrategy = require('passport-local');
-const User = require('./models/user');
+const LocalStrategy = require('passport-local'); //authentication by user/pass
+const flash = require('connect-flash');
 
+const User = require('./models/user');
 const Item = require('./models/item');
 
 const ExpressError = require('./utilities/ExpressError');
@@ -42,6 +43,7 @@ const sessionConfig = {
     }
 }
 app.use(session(sessionConfig));
+app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -49,8 +51,11 @@ passport.use(new LocalStrategy(User.authenticate())); //auth method taken from p
 passport.serializeUser(User.serializeUser()); //method from passport to store auth session
 passport.deserializeUser(User.deserializeUser()); //method from passport to unstore auth session
 
+
 app.use((req, res, next) => {
     res.locals.currentUser = req.user; //global variable to see if there is a user logged in
+    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error');
     next();
 });
 

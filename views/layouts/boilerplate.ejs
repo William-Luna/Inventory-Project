@@ -12,11 +12,10 @@
 
 <body class="bg-slate-800 font-serif flex flex-col h-screen justify-between">
     <%- include('../partials/navbar') %>
-        <main class="container"></main>
+        <%- include('../partials/flash')%>
         <%- body %>
+            <script src="/javascripts/dismissAlert.js"></script>
             <%- include('../partials/footer') %>
-    <script src="/javascripts/toggleSoldForms.js"></script>
-    <script src="/javascripts/formValidation.js"></script>
 </body>
 
 

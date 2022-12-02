@@ -11,11 +11,12 @@ module.exports.register = async (req, res, next) => {
         const registeredUser = await User.register(user, password);
         req.login(registeredUser, err => {
             if (err) return next(err);
-            //req.flash('success', 'Login Successful!');
+            req.flash('success', 'Login Successful!');
             res.redirect('/items');
         })
     } catch (e) {
-        //req.flash('error', e.message);
+        req.flash('error', e.message);
+        console.dir(e.message);
         res.redirect('register');
     }
 }
@@ -25,7 +26,7 @@ module.exports.renderLogin = (req, res) => {
 }
 
 module.exports.login = (req, res) => {
-    //req.flash('success', 'Welcome back!');
+    req.flash('success', 'Welcome back!');
     const redirectUrl = req.session.returnTo || '/items';
     delete req.session.returnTo;
     res.redirect(redirectUrl);
@@ -36,7 +37,7 @@ module.exports.logout = async (req, res, next) => {
         if (err) {
             return next(err);
         }
-        //req.flash('success', 'Goodbye!');
-        res.redirect('/items');
+        req.flash('success', 'Logout successful, see you again!');
+        res.redirect('/');
     });
 }
