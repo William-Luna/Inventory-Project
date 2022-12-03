@@ -4,26 +4,55 @@
     </h1>
 
     <div class="flex justify-center">
-        <div class="grid gap-6 mb-6 border-2 p-2 m-2 rounded-md bg-white shadow">
+        <div class="grid gap-6 mb-6 grid-cols-3 border-2 p-2 m-2 rounded-md bg-white shadow">
             <div class="">
-                <h5 class="text-bold">Category</h5>
+                <span class="font-bold">Category</span>
                 <div class="">
                     <%= item.category %>
                 </div>
             </div>
             <div class="">
-                <h5 class="text-bold">Cost of Item</h5>
+                <span class="font-bold">Cost of Item</span>
                 <div class="">
-                    <%= item.cost %>
+                    $<%= item.cost %>
                 </div>
             </div>
             <div class="">
-                <h5 class="text-bold">Date Bought</h5>
+                <span class="font-bold">Date Bought</span>
                 <div class="">
-                    <%= item.dateBought.toISOString().slice(0,-1) %>
+                    <%= item.dateBought.toISOString().slice(0,10) %>
                 </div>
             </div>
-            <a href="/items/<%= item.id %>/edit">Edit</a>
-            <a href="/items">Back to All Items</a>
+            <% if (item.ifSold) { %> 
+            <div class="">
+                <span class="font-bold">Date Sold</span>
+                <div class="">
+                    <%= item.dateSold.toISOString().slice(0,10) %>
+                </div>
+            </div>
+            <div class="">
+                <span class="font-bold">Return</span>
+                <div class="">
+                    $<%= item.return %>
+                </div>
+            </div>
+            <div class="">
+                <span class="font-bold">Fees</span>
+                <div class="">
+                    $<%= item.fees %>
+                </div>
+            </div>
+
+            <div></div>
+            <div class="font-bold">Profit: <span class="<% if ((item.return - item.cost - item.fees)>0) {%>text-green-500<% } else {%>text-red-500<% } %>  ">$<%= item.return - item.cost - item.fees %></span></div>
+            <div></div>
+
+            <% } %> 
+            
+
+            <a href="/items" class=" text-center bg-gray-500 text-white rounded px-2 py-3">Back to All Items</a>
+            <a href="/items/<%= item.id %>/edit" class="text-center bg-gray-500 text-white rounded px-2 py-3">Edit</a>
+            <div></div>
+            
         </div>
     </div>
