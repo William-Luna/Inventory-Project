@@ -16,7 +16,9 @@
                 </tr>
             </thead>
             <tbody>
+                <% if (currentUser) { %> 
                 <% for (let [i, item] of items.entries()) { %>
+                    <% if (item.owner.equals(currentUser._id)) { %> 
                     <tr
                         class="hover:bg-gray-100 hover:text-black hover:duration-500 border-b <% if (i % 2 === 0) {%>bg-slate-700<%}%>">
                         <td class="py-3">
@@ -42,7 +44,9 @@
                             </form>
                         </td>
                     </tr>
+<% } %> 
                     <% } %>
+                <% } %> 
             </tbody>
         </table>
     </div>

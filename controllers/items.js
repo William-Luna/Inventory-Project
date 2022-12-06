@@ -11,14 +11,7 @@ module.exports.allItems = async (req, res) => {
 //POST /ITEMS CONTROL
 module.exports.createItem = async (req, res) => {
     const item = new Item(req.body.item);
-
-    // const testItem = new Item({
-    //     title: 'Test item',
-    //     category: 'Sneakers',
-    //     dateBought: new Date(),
-    //     cost: 99.99,
-    //     ifSold: false
-    // });
+    item.owner = req.user._id;
     await item.save();
     console.log(item);
     res.redirect('/items');

@@ -23,7 +23,11 @@ const ItemSchema = new Schema ({
     ifSold: Boolean,
     dateSold: Date,
     return: Number,
-    fees: Number
+    fees: Number,
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }
 })
 
 module.exports = mongoose.model('Item', ItemSchema);
