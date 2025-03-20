@@ -12,41 +12,62 @@
                     <th>Category</th>
                     <th>Cost</th>
                     <th>Sold?</th>
+                    <th>Fees</th>
+                    <th>Return</th>
+                    <th>P/L</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                <% if (currentUser) { %> 
-                <% for (let [i, item] of items.entries()) { %>
-                    <% if (item.owner.equals(currentUser._id)) { %> 
-                    <tr
-                        class="hover:bg-gray-100 hover:text-black hover:duration-500 border-b <% if (i % 2 === 0) {%>bg-slate-700<%}%>">
-                        <td class="py-3">
-                            <%= item.dateBought.toISOString().slice(0, 10) %>
-                        </td>
-                        <td class="py-3">
-                            <%= item.title %>
-                        </td>
-                        <td class="py-3">
-                            <%= item.category %>
-                        </td>
-                        <td class="py-3">$<%= item.cost %>
-                        </td>
-                        <td class="py-3">
-                            <% if (item.ifSold) { %>&#x2713<% } %>
-                        </td>
-                        <td class="py-3 text-white">
-                            <a href="/items/<%= item.id %>" class="px-1 py-0.5 rounded bg-gray-600">Details</a>
-                            <a href="/items/<%= item.id %>/edit" class="px-1 py-0.5 rounded bg-gray-600">Edit</a>
-                            <form action="/items/<%= item.id %>?_method=DELETE" method="post">
-                                <button class="rounded bg-red-600 px-1"
-                                    onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-<% } %> 
-                    <% } %>
-                <% } %> 
+                <% if (currentUser) { %>
+                    <% for (let [i, item] of items.entries()) { %>
+                        <% if (item.owner.equals(currentUser._id)) { %>
+                            <tr
+                                class="hover:bg-gray-100 hover:text-black hover:duration-500 border-b <% if (i % 2 === 0) {%>bg-slate-700<%}%>">
+                                <td class="py-3">
+                                    <%= item.dateBought.toISOString().slice(0, 10) %>
+                                </td>
+                                <td class="py-3">
+                                    <%= item.title %>
+                                </td>
+                                <td class="py-3">
+                                    <%= item.category %>
+                                </td>
+                                <td class="py-3">$<%= item.cost %>
+                                </td>
+                                <td class="py-3">
+                                    <% if (item.ifSold) { %>&#x2713<% } %>
+                                </td>
+                                <td class="py-3">
+                                    <% if (item.ifSold) { %>
+                                        $<%= item.fees %>
+                                            <%} else {%>-<%}%>
+                                </td>
+                                <td class="py-3">
+                                    <% if (item.ifSold) { %>
+                                        $<%= item.return %>
+                                            <%} else {%>-<%}%>
+                                </td>
+                                <td
+                                    class="py-3 <% if (item.profit>0) {%>text-green-500<% } if (item.profit<0) {%>text-red-500<% } %>">
+                                    <% if (item.ifSold) { %>
+                                        $<%= item.profit %>
+                                            <%} else {%>-<%}%>
+                                </td>
+
+                                <td class="py-3 text-white">
+                                    <a href="/items/<%= item.id %>" class="px-1 py-0.5 rounded bg-gray-600">Details</a>
+                                    <a href="/items/<%= item.id %>/edit"
+                                        class="px-1 py-0.5 rounded bg-gray-600">Edit</a>
+                                    <form action="/items/<%= item.id %>?_method=DELETE" method="post">
+                                        <button class="rounded bg-red-600 px-1"
+                                            onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <% } %>
+                                <% } %>
+                                    <% } %>
             </tbody>
         </table>
     </div>

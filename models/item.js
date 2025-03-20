@@ -15,7 +15,7 @@ Fees - number
 
 */
 
-const ItemSchema = new Schema ({
+const ItemSchema = new Schema({
     title: String,
     category: String,
     dateBought: Date,
@@ -24,6 +24,7 @@ const ItemSchema = new Schema ({
     dateSold: Date,
     return: Number,
     fees: Number,
+    profit: Number,
     owner: {
         type: Schema.Types.ObjectId,
         ref: 'User'

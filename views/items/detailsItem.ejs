@@ -23,36 +23,39 @@
                     <%= item.dateBought.toISOString().slice(0,10) %>
                 </div>
             </div>
-            <% if (item.ifSold) { %> 
-            <div class="">
-                <span class="font-bold">Date Sold</span>
+            <% if (item.ifSold) { %>
                 <div class="">
-                    <%= item.dateSold.toISOString().slice(0,10) %>
+                    <span class="font-bold">Date Sold</span>
+                    <div class="">
+                        <%= item.dateSold.toISOString().slice(0,10) %>
+                    </div>
                 </div>
-            </div>
-            <div class="">
-                <span class="font-bold">Return</span>
                 <div class="">
-                    $<%= item.return %>
+                    <span class="font-bold">Return</span>
+                    <div class="">
+                        $<%= item.return %>
+                    </div>
                 </div>
-            </div>
-            <div class="">
-                <span class="font-bold">Fees</span>
                 <div class="">
-                    $<%= item.fees %>
+                    <span class="font-bold">Fees</span>
+                    <div class="">
+                        $<%= item.fees %>
+                    </div>
                 </div>
-            </div>
 
-            <div></div>
-            <div class="font-bold">Profit: <span class="<% if ((item.return - item.cost - item.fees)>0) {%>text-green-500<% } else {%>text-red-500<% } %>  ">$<%= item.return - item.cost - item.fees %></span></div>
-            <div></div>
+                <div></div>
+                <div class="font-bold">Profit: <span
+                        class="<% if (item.profit>0) {%>text-green-500<% } else {%>text-red-500<% } %>  ">$<%=
+                            item.return - item.cost - item.fees %></span></div>
+                <div></div>
 
-            <% } %> 
-            
+                <% } %>
 
-            <a href="/items" class=" text-center bg-gray-500 text-white rounded px-2 py-3">Back to All Items</a>
-            <a href="/items/<%= item.id %>/edit" class="text-center bg-gray-500 text-white rounded px-2 py-3">Edit</a>
-            <div></div>
-            
+
+                    <a href="/items" class=" text-center bg-gray-500 text-white rounded px-2 py-3">Back to All Items</a>
+                    <a href="/items/<%= item.id %>/edit"
+                        class="text-center bg-gray-500 text-white rounded px-2 py-3">Edit</a>
+                    <div></div>
+
         </div>
     </div>

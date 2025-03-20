@@ -12,6 +12,7 @@ module.exports.allItems = async (req, res) => {
 module.exports.createItem = async (req, res) => {
     const item = new Item(req.body.item);
     item.owner = req.user._id;
+    item.profit = item.ifSold ? item.return - item.cost - item.fees : null;
     await item.save();
     console.log(item);
     res.redirect('/items');
@@ -42,6 +43,12 @@ module.exports.editItemForm = async (req, res) => {
 module.exports.updateItem = async (req, res) => {
     const { id } = req.params;
     const item = await Item.findByIdAndUpdate(id, { ...req.body.item });
+    item.profit = item.return - item.cost - item.fees;
+    if (!item.ifSold) {
+        item.return = undefined;
+        item.fees = undefined;
+        item.profit = undefined;
+    }
     await item.save();
     console.log(item);
     res.redirect(`/items/${item._id}`);
